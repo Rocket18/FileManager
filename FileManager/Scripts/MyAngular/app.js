@@ -10,8 +10,7 @@ fm.controller("FileManagerCtrl", function ($scope, $http, $log) {
 
     provise.then(fulfilled, rejected);
 
-    function fulfilled(response) {
-      
+    function fulfilled(response) {    
         $scope.item = response.data;
     };
 
@@ -20,7 +19,6 @@ fm.controller("FileManagerCtrl", function ($scope, $http, $log) {
         $log.error(response.status);
         $log.error(response.Message);
     };
-
 
     $scope.GetPathFiles = function (name) {
 
@@ -34,11 +32,4 @@ fm.controller("FileManagerCtrl", function ($scope, $http, $log) {
         provise = $http.get(PathFilesUrl + "?path=" + $scope.item.UpPath);
         provise.then(fulfilled, rejected);
     };
-
-
-    $scope.emptyOrNull = function (item) {
-        return !(item === null || item.trim().length === 0)
-    }
-
-
 });

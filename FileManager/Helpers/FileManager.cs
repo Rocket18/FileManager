@@ -38,10 +38,22 @@ namespace FileManager.Helpers
             if (!String.IsNullOrEmpty(path) && !Directory.Exists(path))
                 throw new Exception("Directory not found");
 
+            String parentDir = String.Empty;
+
+            var path1 = Path.GetFullPath(path+"\\");
+            var path2 = Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory);
+
+
+            if (!string.Equals(path1, path2, StringComparison.OrdinalIgnoreCase))
+            { 
+                parentDir = Directory.GetParent(path).FullName;
+            }
+
+         
             var model = new FileBrowsingModel()
             {
                 CurrentPath = path,
-                UpPath = Directory.GetParent(path).FullName
+                UpPath = parentDir
             };
 
             fileInfo = new DirectoryInfo(path).GetFiles("*", SearchOption.AllDirectories);

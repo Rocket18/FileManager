@@ -19,7 +19,7 @@
 
     <div>
         <ul class="list-unstyled" >
-            <li ng-if="item.UpPath | filter:emptyOrNull" ng-click="UpPath()">..</li>
+            <li ng-if="item.UpPath!=''" ng-click="UpPath()">..</li>
             <li ng-repeat="item in item.Files">
                 <span ng-click="GetPathFiles(item)">{{item}}</span>         
             </li>          
