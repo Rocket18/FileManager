@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "File Manager";
+}
+<div class="row" ng-controller="FileManagerCtrl">
+    <table class="table">
+        <tr>
+            <th>Less 10Mb</th>
+            <th>10Mb-50Mb</th>
+            <th>More 100Mb</th>
+        </tr>
+        <tr>
+            <td>{{item.LessThen10MbCount}}</td>
+            <td>{{item.Beetween10and50MbCount}}</td>
+            <td>{{item.More100MbCount}}</td>
+        </tr>
+    </table>
+
+    <p><b>Current path:</b> {{item.CurrentPath}}</p>
+
+    <div>
+        <ul class="list-unstyled" >
+            <li ng-if="item.UpPath | filter:emptyOrNull" ng-click="UpPath()">..</li>
+            <li ng-repeat="item in item.Files">
+                <span ng-click="GetPathFiles(item)">{{item}}</span>         
+            </li>          
+        </ul>
+    </div>
+</div>
