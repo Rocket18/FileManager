@@ -10,6 +10,10 @@ namespace FileManager.Controllers
     {
         public ActionResult Index()
         {
+            var fullUrl = this.Url.Action("Index", null, null, Request.Url.Scheme);
+
+            ViewBag.BaseUrl = fullUrl;
+
             return View();
         }
     }

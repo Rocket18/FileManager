@@ -18,11 +18,14 @@
     <p><b>Current path:</b> {{item.CurrentPath}}</p>
 
     <div>
-        <ul class="list-unstyled" >
+        <ul class="list-unstyled">
             <li ng-if="item.UpPath!=''" ng-click="UpPath()">..</li>
             <li ng-repeat="item in item.Files">
-                <span ng-click="GetPathFiles(item)">{{item}}</span>         
-            </li>          
+                <span ng-click="GetPathFiles(item)">{{item}}</span>
+            </li>
         </ul>
     </div>
 </div>
+<script>
+    var paramsFromView = { "baseUrl": '@ViewBag.BaseUrl' };
+</script>
